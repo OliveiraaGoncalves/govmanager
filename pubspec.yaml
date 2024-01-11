@@ -37,6 +37,8 @@ dependencies:
     path: core_shared_ui
   core_network:
     path: core_network
+  core_shared:
+    path: core_shared
 
 dev_dependencies:
   flutter_test:

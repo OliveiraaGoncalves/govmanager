@@ -1,4 +1,4 @@
-class FuelTransactionModel {
+class FuelTransaction {
   String gasStation;
   String gasStationReason;
   String? address;
@@ -44,7 +44,7 @@ class FuelTransactionModel {
   String? driverRegistrationNumber;
   String? serviceName;
 
-  FuelTransactionModel(
+  FuelTransaction(
       {required this.gasStation,
       required this.gasStationReason,
       this.address,

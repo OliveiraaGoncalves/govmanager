@@ -25,4 +25,22 @@ class NetworkResponse<T> {
   factory NetworkResponse.error(dynamic error) {
     return NetworkResponse<T>(error: error);
   }
+
+  // Stream<T> toStream(NetworkResponse<T> networkResponse) async* {
+  //   if (networkResponse.isSuccess) {
+  //     yield networkResponse.data as T;
+  //   } else if (networkResponse.isError) {
+  //     throw networkResponse.error ?? Exception('GenericError');
+  //   }
+  // }
+}
+
+extension NetworkResponseToStreamExtension<T> on NetworkResponse<T> {
+  Stream<T> toStream() async* {
+    if (isSuccess) {
+      yield data as T;
+    } else if (isError) {
+      throw error ?? Exception('GenericError');
+    }
+  }
 }

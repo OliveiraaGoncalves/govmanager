@@ -1,7 +1,8 @@
-import '../../extension/mappable.dart';
-import '../domain/fuel_transaction_model.dart';
+import 'package:core_shared/core_shared.dart';
 
-class FuelTransaction implements Mappable<FuelTransactionModel> {
+import '../domain/fuel_transaction.dart';
+
+class FuelTransactionModel implements Mappable<FuelTransaction> {
   String gasStation;
   String gasStationReason;
   String? address;
@@ -47,7 +48,7 @@ class FuelTransaction implements Mappable<FuelTransactionModel> {
   String? driverRegistrationNumber;
   String? serviceName;
 
-  FuelTransaction.fromJson(Map<String, dynamic> json)
+  FuelTransactionModel.fromJson(Map<String, dynamic> json)
       : gasStation = json['posto'],
         gasStationReason = json['posto_razao'],
         address = json['endereco'],
@@ -94,8 +95,8 @@ class FuelTransaction implements Mappable<FuelTransactionModel> {
         serviceName = json['nomeServico'];
 
   @override
-  FuelTransactionModel toModel() {
-    return FuelTransactionModel(
+  FuelTransaction toModel() {
+    return FuelTransaction(
       gasStation: gasStation,
       gasStationReason: gasStationReason,
       address: address,
@@ -142,3 +143,4 @@ class FuelTransaction implements Mappable<FuelTransactionModel> {
       serviceName: serviceName,
     );
   }
+}
