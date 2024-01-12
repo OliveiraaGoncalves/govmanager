@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:govmanager/app/home/domain/fuel_transaction.dart';
 import 'package:govmanager/app/home/domain/fuel_transaction_use_case.dart';
 
 class FuelTransactionViewModel with ChangeNotifier {
@@ -7,8 +6,10 @@ class FuelTransactionViewModel with ChangeNotifier {
 
   FuelTransactionViewModel(this._useCase);
 
-  List<FuelTransaction>? getTransactionsSecretaryOfSocialCommunication(){
-    _useCase.getTransactionsSecretaryOfSocialCommunication().then((value) => value.data);
-    return null;
+  Future<void> getTransactionsSecretaryOfSocialCommunication() async {
+    final stream = await _useCase.getTransactionsSecretaryOfSocialCommunication();
+    stream.listen((transactions) {
+      notifyListeners();
+    });
   }
 }
