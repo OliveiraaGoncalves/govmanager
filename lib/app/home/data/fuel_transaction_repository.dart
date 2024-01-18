@@ -17,6 +17,6 @@ class FuelTransactionRepositoryImpl extends FuelTransactionRepository {
       getTransactionsSecretaryOfSocialCommunication() async {
     return service
         .getTransactionsSecretaryOfSocialCommunication()
-        .then((value) => value.toStream(networkResponse));
+        .then((value) => value.toStream());
   }
 }

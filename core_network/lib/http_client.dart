@@ -1,9 +1,8 @@
-import 'package:core_network/constants%20/http_path.dart';
-import 'package:core_network/http_request_type.dart';
 import 'package:dio/dio.dart';
-
+import 'constants /http_path.dart';
+import 'http_request_type.dart';
 import 'interceptors/error_interceptors.dart';
-import 'network_response.dart';
+import 'network_response.dart'; // Importe sua classe NetworkResponse e outras dependências necessárias
 
 class HttpClient {
   final dio = createDio();
@@ -27,7 +26,7 @@ class HttpClient {
   static Dio createDio() {
     var dio = Dio(BaseOptions(
       baseUrl: HttpPath.baseUrl,
-      receiveTimeout: const Duration(seconds: 20), // 20 seconds
+      receiveTimeout: const Duration(seconds: 20), // 20 segundos
       connectTimeout: const Duration(seconds: 20),
       sendTimeout: const Duration(seconds: 20),
     ));
@@ -45,57 +44,65 @@ class HttpClient {
     Map<String, dynamic>? body,
     required HttpRequestType requestType,
   }) async {
-    Uri uri = Uri.parse(HttpPath.baseUrl+url);
+    Uri uri = Uri.parse(HttpPath.baseUrl + url);
 
-    late Response result;
     try {
       switch (requestType) {
         case HttpRequestType.GET:
           {
             Options options = Options(headers: header);
-            result = await dio.get(uri.toString(),
-                queryParameters: queryParameters, options: options);
-            break;
+            Response<dynamic> result = await dio.get(
+              uri.toString(),
+              queryParameters: queryParameters,
+              options: options,
+            );
+            return NetworkResponse<T>(value: result.data);
           }
         case HttpRequestType.POST:
           {
             Options options = Options(headers: header);
-            result = await dio.post(url, data: body, options: options);
-            break;
+            Response<dynamic> result = await dio.post(
+              url,
+              data: body,
+              options: options,
+            );
+            return NetworkResponse<T>(value: result.data);
           }
         case HttpRequestType.DELETE:
           {
             Options options = Options(headers: header);
-            result =
-                await dio.delete(url, data: queryParameters, options: options);
-            break;
+            Response<dynamic> result = await dio.delete(
+              url,
+              data: queryParameters,
+              options: options,
+            );
+            return NetworkResponse<T>(value: result.data);
           }
         case HttpRequestType.PATCH:
           {
             Options options = Options(headers: header);
-            result =
-                await dio.patch(url, data: queryParameters, options: options);
-            break;
+            Response<dynamic> result = await dio.patch(
+              url,
+              data: queryParameters,
+              options: options,
+            );
+            return NetworkResponse<T>(value: result.data);
           }
         case HttpRequestType.PUT:
           {
             Options options = Options(headers: header);
-            result =
-                await dio.put(url, data: queryParameters, options: options);
-            break;
+            Response<dynamic> result = await dio.put(
+              url,
+              data: queryParameters,
+              options: options,
+            );
+            return NetworkResponse<T>(value: result.data);
           }
       }
-
-
-      if (result.data == null) {
-        return NetworkResponse.error("Data is null");
-      } else {
-        return NetworkResponse.success(result.data);
-      }
-    } on DioException catch (error) {
-      return NetworkResponse.error(error.message);
+    } on DioError catch (error) {
+      return NetworkResponse<T>(exception: Failure(code: error.response?.statusCode, errorMessage: error.message));
     } catch (error) {
-      return NetworkResponse.error(error.toString());
+      return NetworkResponse<T>(exception: Failure(code: -1, errorMessage: error.toString()));
     }
   }
 }
