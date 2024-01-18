@@ -1,5 +1,7 @@
+import 'package:core_shared/extensions/page_extension.dart';
 import 'package:core_shared_ui/core_shared_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:govmanager/app/home/presentation/fuel_transaction_view_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,6 +17,8 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.viewModel<FuelTransactionViewModel>();
+    viewModel.getTransactionsSecretaryOfSocialCommunication();
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: CustomScrollView(

@@ -19,6 +19,7 @@ class FuelTransactionServiceImpl extends FuelTransactionService {
       getTransactionsSecretaryOfSocialCommunication() async {
     return httpClient.apiCall(
         url: HttpPath.secretaryOfSocialCommunication,
-        requestType: HttpRequestType.GET);
+        requestType: HttpRequestType.GET
+    );
   }
 }

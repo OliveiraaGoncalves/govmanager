@@ -9,6 +9,7 @@ class FuelTransactionViewModel with ChangeNotifier {
   Future<void> getTransactionsSecretaryOfSocialCommunication() async {
     final stream = await _useCase.getTransactionsSecretaryOfSocialCommunication();
     stream.listen((transactions) {
+      transactions.map((e) => print(e));
       notifyListeners();
     });
   }

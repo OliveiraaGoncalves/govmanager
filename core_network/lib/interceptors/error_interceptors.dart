@@ -38,6 +38,10 @@ class ErrorInterceptors extends Interceptor {
         break;
       case DioExceptionType.connectionError:
         throw NoInternetConnectionException(err.requestOptions);
+      case DioExceptionType.badCertificate:
+        // TODO: Handle this case.
+      case DioExceptionType.badResponse:
+        // TODO: Handle this case.
     }
 
     return handler.next(err);

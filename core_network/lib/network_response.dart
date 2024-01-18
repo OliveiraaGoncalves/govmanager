@@ -16,10 +16,8 @@ class NetworkResponse<T> {
     }
   }
 
-  factory NetworkResponse.success(
-      Map<String, dynamic> json, T Function(dynamic json) fromJson) {
-    final data = fromJson(json);
-    return NetworkResponse<T>(data: data);
+  factory NetworkResponse.success(T data) {
+  return NetworkResponse<T>(data: data);
   }
 
   factory NetworkResponse.error(dynamic error) {

@@ -39,18 +39,21 @@ class HttpClient {
     return dio;
   }
 
-  Future<NetworkResponse<T>> apiCall<T>(
-      {required String url,
-      Map<String, dynamic>? queryParameters,
-      Map<String, dynamic>? body,
-      required HttpRequestType requestType}) async {
+  Future<NetworkResponse<T>> apiCall<T>({
+    required String url,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? body,
+    required HttpRequestType requestType,
+  }) async {
+    Uri uri = Uri.parse(HttpPath.baseUrl+url);
+
     late Response result;
     try {
       switch (requestType) {
         case HttpRequestType.GET:
           {
             Options options = Options(headers: header);
-            result = await dio.get(url,
+            result = await dio.get(uri.toString(),
                 queryParameters: queryParameters, options: options);
             break;
           }
@@ -82,6 +85,7 @@ class HttpClient {
             break;
           }
       }
+
 
       if (result.data == null) {
         return NetworkResponse.error("Data is null");
