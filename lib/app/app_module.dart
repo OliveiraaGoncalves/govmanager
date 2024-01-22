@@ -19,9 +19,8 @@ class AppModule extends Module {
     i.add(FuelTransactionViewModel.new);
     i.add<FuelTransactionUseCase>(FuelTransactionUseCaseImpl.new);
     i.add<FuelTransactionRepository>(FuelTransactionRepositoryImpl.new);
-    i.add<FuelTransactionService>(FuelTransactionServiceImpl.new);
-    i.add<HttpClient>(HttpClient.new);
-    // i.add<OnboardingUseCase>(OnboardingUseCaseImpl.new);
+
+    i.addInstance(FuelTransactionService(ApplicationNetwork.createDio()));
     // i.add<OnboardingRepository>(OnboardingRepositoryImpl.new);
   }
 }

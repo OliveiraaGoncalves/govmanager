@@ -1,9 +1,8 @@
-import 'package:core_network/core_network.dart';
 import 'package:govmanager/app/home/data/api/fuel_transaction_service.dart';
 import 'package:govmanager/app/home/data/fuel_transaction_model.dart';
 
 abstract class FuelTransactionRepository {
-  Future<Stream<List<FuelTransactionModel>>>
+  Future<List<FuelTransactionModel>>
       getTransactionsSecretaryOfSocialCommunication();
 }
 
@@ -13,10 +12,10 @@ class FuelTransactionRepositoryImpl extends FuelTransactionRepository {
   FuelTransactionRepositoryImpl(this.service);
 
   @override
-  Future<Stream<List<FuelTransactionModel>>>
+  Future<List<FuelTransactionModel>>
       getTransactionsSecretaryOfSocialCommunication() async {
-    return service
+    return await service
         .getTransactionsSecretaryOfSocialCommunication()
-        .then((value) => value.toStream());
+        .then((value) => value);
   }
 }

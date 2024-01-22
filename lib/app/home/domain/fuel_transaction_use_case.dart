@@ -4,7 +4,7 @@ import 'package:govmanager/app/home/data/fuel_transaction_repository.dart';
 import 'package:govmanager/app/home/domain/fuel_transaction.dart';
 
 abstract class FuelTransactionUseCase {
-  Future<Stream<List<FuelTransaction?>>>
+  Future<List<FuelTransaction>>
       getTransactionsSecretaryOfSocialCommunication();
 }
 
@@ -14,11 +14,10 @@ class FuelTransactionUseCaseImpl extends FuelTransactionUseCase {
   FuelTransactionUseCaseImpl(this._repository);
 
   @override
-  Future<Stream<List<FuelTransaction?>>>
+  Future<List<FuelTransaction>>
       getTransactionsSecretaryOfSocialCommunication() async {
-    final stream =
-        await _repository.getTransactionsSecretaryOfSocialCommunication();
-    return stream
-        .map((models) => models.map((model) => model.toModel()).toList());
+    return _repository
+        .getTransactionsSecretaryOfSocialCommunication()
+        .then((value) => value.map((e) => e.toModel()).toList());
   }
 }
