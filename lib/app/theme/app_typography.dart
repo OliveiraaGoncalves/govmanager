@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppTextTheme {
+class AppTypography {
   static const String appFontFamily = "Roboto";
   static TextTheme get textTheme => textThemeRoboto;
   static TextTheme textThemeRoboto = const TextTheme(
@@ -57,7 +57,8 @@ class AppTextTheme {
         fontFamily: appFontFamily,
         fontSize: 12,
         fontWeight: FontWeight.w400,
-        letterSpacing: 0.4),
+        letterSpacing: 0.4,
+    ),
     labelSmall: TextStyle(
         fontFamily: appFontFamily,
         fontSize: 10,

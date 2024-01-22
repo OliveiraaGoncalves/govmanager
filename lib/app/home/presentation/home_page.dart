@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     final viewModell = context.viewModel<FuelTransactionViewModel>();
@@ -24,86 +23,120 @@ class HomePageState extends State<HomePage> {
     setState(() {
       viewModell.getTransactionsSecretaryOfSocialCommunication();
     });
+    List<CardItemProperties> items = [
+      CardItemProperties(label: "total 1", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
+      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm)
+    ].toList();
 
     return ChangeNotifierProvider(
       create: (context) => viewModell,
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        body: Consumer<FuelTransactionViewModel>(builder: (context, viewModel, child){
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar.medium(
-                pinned: true,
-                floating: false,
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                flexibleSpace: FlexibleSpaceBar(
-                  centerTitle: false,
-                  titlePadding: const EdgeInsets.only(left: 16.0, bottom: 26.0),
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Gov Manager',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      const SizedBox(height: 5.0),
-                      Text(
-                        'Olá, Bem-vindo',
-                        style: Theme.of(context).textTheme.labelSmall,
-                      ),
-                    ],
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          body: Consumer<FuelTransactionViewModel>(
+              builder: (context, viewModel, child) {
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar.medium(
+                  pinned: true,
+                  floating: false,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: false,
+                    titlePadding: const EdgeInsets.only(
+                        left: Dimens.dimen16, bottom: Dimens.dimen26),
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          Strings.homeLabelGov,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        const SizedBox(height: Dimens.dimen5),
+                        Text(
+                          Strings.homeWelcome,
+                          style: Theme.of(context).textTheme.labelSmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                  actions: [
+                    IconButton(
+                      icon: const Icon(Icons.account_circle_outlined),
+                      onPressed: () {},
+                    )
+                  ],
+                ),
+
+                SliverToBoxAdapter(
+                  child: IntrinsicHeight(
+                    child: Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(Dimens.dimen40),
+                            topRight: Radius.circular(Dimens.dimen40),
+                          ),
+                          color: Colors.white,
+                        ),
+                        child: CardItemListWidget(
+                          cardItem: items,
+                          cardMargin: const EdgeInsets.fromLTRB(Dimens.dimen16,
+                              Dimens.dimen25, Dimens.dimen16, Dimens.dimen16),
+                        )
+                    ),
                   ),
                 ),
-                actions: [
-                  IconButton(
-                    icon: const Icon(Icons.account_circle_outlined),
-                    onPressed: () {},
-                  )
-                ],
-              ),
-              SliverToBoxAdapter(
-                child: Container(
-                    height: 900,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40.0),
-                        topRight: Radius.circular(40.0),
+                SliverToBoxAdapter(
+                  child: Container(
+                      height: 400,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
                       ),
-                      color: Colors.white,
-                    ),
-                    child: Card(
-                      child: PieChart(
-                        PieChartData(
-                            sections:[
-                              PieChartSectionData(
-                                  value: 20
-                              ),
-                              PieChartSectionData(
-                                  value: 20
-                              )
-                            ]
-                        ),
-                      ),
-                    )
-          ),
-              ),
-              // SliverToBoxAdapter(
-              //   child: Container(
-              //     height: 900,
-              //     decoration: const BoxDecoration(
-              //       borderRadius: BorderRadius.only(
-              //         bottomLeft: Radius.circular(20.0),
-              //         bottomRight: Radius.circular(20.0),
-              //       ),
-              //       color: Colors.white,
-              //     ),
-              //   ),
-              // )
-            ],
-          );
-        })
-      ),
+                      child: CardItemListWidget(
+                        cardItem: items,
+                        cardMargin: const EdgeInsets.fromLTRB(Dimens.dimen16,
+                            Dimens.dimen25, Dimens.dimen16, Dimens.dimen16),
+                      )
+                  ),
+                ),
+                // SliverToBoxAdapter(
+                //   child: Container(
+                //     height: 900,
+                //     decoration: const BoxDecoration(
+                //       borderRadius: BorderRadius.only(
+                //         bottomLeft: Radius.circular(20.0),
+                //         bottomRight: Radius.circular(20.0),
+                //       ),
+                //       color: Colors.white,
+                //     ),
+                //   ),
+                // )
+              ],
+            );
+          })),
     );
   }
 }
