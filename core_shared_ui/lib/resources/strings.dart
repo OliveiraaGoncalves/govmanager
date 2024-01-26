@@ -1,4 +1,5 @@
 class Strings {
-  static const homeLabelGov = 'Gov Manager';
-  static const homeWelcome = 'Olá, Bem-vindo';
+  static const featureHomeLabelGov = 'Gov Manager';
+  static const featureHomeWelcome = 'Olá, Bem-vindo';
+  static const featureHomeLabelCardItemOne = 'Parceiros';
 }

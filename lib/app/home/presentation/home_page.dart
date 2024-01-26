@@ -27,27 +27,6 @@ class HomePageState extends State<HomePage> {
       CardItemProperties(label: "total 1", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
       CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
       CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
-      CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm),
       CardItemProperties(label: "total 2", iconStart: Icons.ac_unit, iconEnd: Icons.access_alarm)
     ].toList();
 
@@ -72,12 +51,12 @@ class HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          Strings.homeLabelGov,
+                          Strings.featureHomeLabelGov,
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         const SizedBox(height: Dimens.dimen5),
                         Text(
-                          Strings.homeWelcome,
+                          Strings.featureHomeWelcome,
                           style: Theme.of(context).textTheme.labelSmall,
                         ),
                       ],
